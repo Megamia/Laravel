@@ -1,0 +1,433 @@
+<template>
+  <HeaderLayout />
+  <div class="main">
+    <div class="documents">
+      <div class="title">
+        <span> Documents </span>
+      </div>
+      <div class="search">
+        <input type="text" placeholder="Search Documents" class="searchinput" />
+        <div class="right">
+          <div class="sort">
+            <span>
+              Sort by
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon2">
+                <path
+                  d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                />
+              </svg>
+            </span>
+          </div>
+          <div class="filter">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon">
+              <path
+                d="M3.9 54.9C10.5 40.9 24.5 32 40 32H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9V448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6V320.9L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="choose">
+        <div class="iconchoose">
+          <div class="diviconchoose">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.78966 0C4.43284 0 2.65024 0.795072 1.53966 2.12019C0.429087 3.44531 0 5.19321 0 7.01683C0 11.2698 2.19907 15.933 2.92788 17.3654L1.69111 19.8642C1.5302 20.1071 1.60907 20.4289 1.69111 20.6719C1.85201 20.8328 2.10126 21 2.42308 21H20.1923C20.6782 21 21 20.5962 21 20.1923C21 20.0314 21.0095 19.8736 20.8486 19.7127L18.6022 15.22V6.61298C18.6148 6.52779 18.6148 6.44576 18.6022 6.36058V4.84615C18.6053 4.60637 18.5044 4.37605 18.3277 4.21514C18.1478 4.05424 17.9081 3.98167 17.6683 4.01322C17.2455 4.06055 16.93 4.42022 16.9363 4.84615V5.62861H12.9231V4.84615C12.9231 4.36028 12.6013 4.03846 12.1154 4.03846H12.0649C11.9545 3.27178 11.6611 2.45147 11.0553 1.71635C10.2287 0.716196 8.82151 0 6.78966 0ZM6.78966 1.61538C8.4713 1.61538 9.31055 2.11073 9.81851 2.72596C10.1403 3.11719 10.3296 3.5936 10.4243 4.0637C9.98573 4.09841 9.69231 4.39183 9.69231 4.84615V5.62861H5.67909V4.84615C5.68224 4.60637 5.58128 4.37605 5.4046 4.21514C5.22476 4.05424 4.98498 3.98167 4.74519 4.01322C4.32242 4.06055 4.00691 4.42022 4.01322 4.84615V6.18389C3.95959 6.34796 3.95959 6.52464 4.01322 6.6887V15.22L3.86178 15.4976C2.95628 13.4279 1.61538 9.89108 1.61538 7.01683C1.61538 5.44877 1.98768 4.0921 2.77644 3.15505C3.5652 2.218 4.78305 1.61538 6.78966 1.61538ZM5.67909 7.29447H9.69231V10.5C9.69231 10.9859 10.0141 11.3077 10.5 11.3077V12.1154H12.1154V11.3077C12.6013 11.3077 12.9231 10.9859 12.9231 10.5V7.29447H16.9363V14.5385H5.67909V7.29447Z"
+                  fill="#4A85F6"
+                  class="icon3"
+                />
+              </svg>
+            </span>
+          </div>
+          <div class="diviconchoose">
+            <svg xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0.59375 0C0.265475 0 0 0.265475 0 0.59375V5.89183C0 6.13161 0.142729 6.34856 0.365385 6.4399C0.585186 6.53125 0.836388 6.4713 1.00481 6.30288L2.76322 4.54447L5.36659 7.14784C5.5293 7.31055 5.79763 7.31055 5.96034 7.14784L7.14784 5.96034C7.31055 5.80048 7.30769 5.52644 7.14784 5.36659L4.54447 2.76322L6.30288 1.00481C6.41421 0.890625 6.48558 0.747897 6.48558 0.59375C6.48558 0.516676 6.4713 0.439604 6.4399 0.365385C6.34856 0.145583 6.13161 0 5.89183 0H0.59375ZM13.1082 0C12.8684 0 12.6514 0.142729 12.5601 0.365385C12.4688 0.585186 12.5287 0.836388 12.6971 1.00481L14.4555 2.76322L11.8522 5.36659C11.6895 5.5293 11.6895 5.79763 11.8522 5.96034L13.0397 7.14784C13.2024 7.31055 13.4707 7.31055 13.6334 7.14784L16.2368 4.54447L17.9952 6.30288C18.1094 6.41421 18.2521 6.48558 18.4062 6.48558C18.4833 6.48558 18.5604 6.4713 18.6346 6.4399C18.8544 6.34856 19 6.13161 19 5.89183V0.59375C19 0.265475 18.7345 0 18.4062 0H13.1082ZM5.66346 11.738C5.55784 11.738 5.44651 11.7722 5.36659 11.8522L2.76322 14.4555L1.00481 12.6971C0.890625 12.5858 0.747897 12.5144 0.59375 12.5144C0.516676 12.5144 0.439604 12.5287 0.365385 12.5601C0.145583 12.6514 0 12.8684 0 13.1082V18.4062C0 18.7345 0.26833 19 0.59375 19H5.89183C6.13161 19 6.34856 18.8573 6.4399 18.6346C6.53125 18.4148 6.4713 18.1636 6.30288 17.9952L4.54447 16.2368L7.125 13.6334C7.28771 13.4707 7.28771 13.2024 7.125 13.0397L5.96034 11.875C5.88041 11.7951 5.76908 11.738 5.66346 11.738ZM13.3365 11.738C13.2309 11.738 13.1224 11.7722 13.0397 11.8522L11.875 13.0397C11.7123 13.2024 11.6895 13.4707 11.8522 13.6334L14.4555 16.2368L12.6971 17.9952C12.5858 18.1094 12.5144 18.2521 12.5144 18.4062C12.5144 18.4833 12.5287 18.5604 12.5601 18.6346C12.6514 18.8544 12.8684 19 13.1082 19H18.4062C18.7345 19 19 18.7345 19 18.4062V13.1082C19 12.8684 18.8573 12.6514 18.6346 12.5601C18.4148 12.4688 18.1636 12.5287 17.9952 12.6971L16.2368 14.4555L13.6334 11.8522C13.5535 11.7722 13.4422 11.738 13.3365 11.738Z"
+                fill="#4A85F6"
+                class="icon3"
+              />
+            </svg>
+          </div>
+          <div class="diviconchoose">
+            <svg xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M2.88 0C2.48344 0 2.16 0.328275 2.16 0.730769V2.19231H2.52C3.51281 2.19231 4.32 3.01157 4.32 4.01923C4.32 5.02689 3.51281 5.84615 2.52 5.84615H2.16V8.03846H2.52C3.51281 8.03846 4.32 8.85772 4.32 9.86538C4.32 10.873 3.51281 11.6923 2.52 11.6923H2.16V13.8846H2.52C3.51281 13.8846 4.32 14.7039 4.32 15.7115C4.32 16.7192 3.51281 17.5385 2.52 17.5385H2.16V18.2692C2.16 18.6717 2.48344 19 2.88 19H17.28C17.6766 19 18 18.6717 18 18.2692V0.730769C18 0.328275 17.6766 0 17.28 0H2.88ZM1.08 2.92308C0.48375 2.92308 0 3.41406 0 4.01923C0 4.6244 0.48375 5.11538 1.08 5.11538H2.52C3.11625 5.11538 3.6 4.6244 3.6 4.01923C3.6 3.41406 3.11625 2.92308 2.52 2.92308H1.08ZM7.2 2.92308H14.4C14.7966 2.92308 15.12 3.25135 15.12 3.65385V8.76923C15.12 9.17172 14.7966 9.5 14.4 9.5H7.2C6.80344 9.5 6.48 9.17172 6.48 8.76923V3.65385C6.48 3.25135 6.80344 2.92308 7.2 2.92308ZM8.505 4.38462C8.10844 4.42172 7.81594 4.7814 7.8525 5.18389C7.88906 5.58639 8.24344 5.88326 8.64 5.84615H12.96C13.2188 5.84901 13.4606 5.71199 13.5928 5.48362C13.7222 5.25526 13.7222 4.97551 13.5928 4.74715C13.4606 4.51878 13.2188 4.38176 12.96 4.38462H8.64C8.6175 4.38462 8.595 4.38462 8.5725 4.38462C8.55 4.38462 8.5275 4.38462 8.505 4.38462ZM8.505 6.57692C8.10844 6.61403 7.81594 6.97371 7.8525 7.3762C7.88906 7.7787 8.24344 8.07557 8.64 8.03846H12.96C13.2188 8.04132 13.4606 7.9043 13.5928 7.67593C13.7222 7.44757 13.7222 7.16782 13.5928 6.93945C13.4606 6.71109 13.2188 6.57407 12.96 6.57692H8.64C8.6175 6.57692 8.595 6.57692 8.5725 6.57692C8.55 6.57692 8.5275 6.57692 8.505 6.57692ZM1.08 8.76923C0.48375 8.76923 0 9.26022 0 9.86538C0 10.4706 0.48375 10.9615 1.08 10.9615H2.52C3.11625 10.9615 3.6 10.4706 3.6 9.86538C3.6 9.26022 3.11625 8.76923 2.52 8.76923H1.08ZM1.08 14.6154C0.48375 14.6154 0 15.1064 0 15.7115C0 16.3167 0.48375 16.8077 1.08 16.8077H2.52C3.11625 16.8077 3.6 16.3167 3.6 15.7115C3.6 15.1064 3.11625 14.6154 2.52 14.6154H1.08Z"
+                fill="#4A85F6"
+                class="icon3"
+              />
+            </svg>
+          </div>
+          <div class="diviconchoose">
+            <svg xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M5.09255 0C3.89078 0 2.90024 0.990535 2.90024 2.19231V5.84615H2.19231C0.981971 5.84615 0 6.82812 0 8.03846V12.4231C0 13.6334 0.981971 14.6154 2.19231 14.6154H2.90024V16.8077C2.90024 18.0095 3.89078 19 5.09255 19H13.8618C15.0636 19 16.0541 18.0095 16.0541 16.8077V14.6154H16.8077C18.018 14.6154 19 13.6334 19 12.4231V8.03846C19 6.82812 18.018 5.84615 16.8077 5.84615H16.0541V2.19231C16.0541 0.990535 15.0636 0 13.8618 0H5.09255ZM5.09255 1.46154H13.8618C14.2728 1.46154 14.5925 1.78125 14.5925 2.19231V5.84615H4.36178V2.19231C4.36178 1.78125 4.68149 1.46154 5.09255 1.46154ZM15.7115 7.30769C16.3167 7.30769 16.8077 7.79868 16.8077 8.40385C16.8077 9.00901 16.3167 9.5 15.7115 9.5C15.1064 9.5 14.6154 9.00901 14.6154 8.40385C14.6154 7.79868 15.1064 7.30769 15.7115 7.30769ZM4.36178 10.9615H14.5925V16.8077C14.5925 17.2188 14.2728 17.5385 13.8618 17.5385H5.09255C4.68149 17.5385 4.36178 17.2188 4.36178 16.8077V10.9615ZM5.84615 12.4231V13.8846H13.1538V12.4231H5.84615ZM5.84615 14.6154V16.0769H10.9615V14.6154H5.84615Z"
+                fill="#4A85F6"
+                class="icon3"
+              />
+            </svg>
+          </div>
+          <div class="diviconchoose">
+            <svg xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M4.77344 -0.0234375C4.4248 -0.0234375 4.14062 0.260742 4.14062 0.609375V2.76562C2.10156 2.99707 0.695312 3.46582 0.695312 4.00781V5.03906C0.695312 5.25 0.920898 5.44336 1.30469 5.625C2.30957 6.09668 4.4834 6.42188 7 6.42188C9.51953 6.42188 11.6875 6.09668 12.6953 5.625C13.0762 5.44336 13.3047 5.25 13.3047 5.03906V4.00781C13.3047 3.44824 11.7842 2.96191 9.625 2.74219V0.609375C9.625 0.260742 9.34082 -0.0234375 8.99219 -0.0234375H4.77344ZM5.40625 1.125H8.38281C8.44727 1.125 8.47656 1.42676 8.47656 1.80469V2.64844C7.99902 2.625 7.51562 2.60156 7 2.60156C6.4668 2.60156 5.94531 2.62207 5.45312 2.64844L5.28906 2.67188V1.80469C5.28906 1.42676 5.34473 1.125 5.40625 1.125ZM1.58594 7.14844C1.51855 7.21875 1.4834 7.2832 1.46875 7.35938V7.40625C1.46875 7.41797 1.46582 7.44434 1.46875 7.45312L1.89062 16.2656C1.92871 16.957 2.72852 18 7 18C11.2715 18 12.0713 16.957 12.1094 16.2656L12.5312 7.45312C12.5312 7.44141 12.5312 7.41797 12.5312 7.40625V7.35938C12.5195 7.2832 12.4814 7.21875 12.4141 7.14844C11.8633 7.70801 9.64551 7.78125 7 7.78125C4.35449 7.78125 2.13965 7.70801 1.58594 7.14844Z"
+                fill="#4A85F6"
+                class="icon3"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="buttonchoose">
+          <select class="btcdetail" v-model="selected">
+            <option
+              v-for="month in months"
+              :value="month.val"
+              :key="month.val"
+              :disabled="month.disabled"
+            >
+              {{ month.text }}
+            </option>
+          </select>
+          <select class="btcdetail" v-model="selected">
+            <option
+              v-for="doc in docs"
+              :value="doc.val"
+              :key="doc.val"
+              :disabled="doc.disabled"
+            >
+              {{ doc.text }}
+            </option>
+          </select>
+          <div class="buttonadd">
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                class="iconadd"
+              >
+                <path
+                  d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="list">
+        <div class="titlelist">
+          <span class="titlelistup"> List of documents </span>
+          <span class="titlelistdown"> Lorem ipsum lorem uojuhn </span>
+        </div>
+        <div class="listdetail" v-for="list in lists" :key="list.name">
+          <div class="listdetails">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 384 512"
+              class="icondocument"
+            >
+              <path
+                d="M320 464c8.8 0 16-7.2 16-16V160H256c-17.7 0-32-14.3-32-32V48H64c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320zM0 64C0 28.7 28.7 0 64 0H229.5c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64z"
+              />
+            </svg>
+          </div>
+          <div class="details">
+            <div class="name">
+              <span class="nameup">{{ list.name }} </span>
+              <span class="namedown">{{ list.date }} </span>
+            </div>
+            <div class="intro">
+              <span>
+                {{ list.des }}
+              </span>
+            </div>
+            <div class="action">
+              <div class="iconaction">
+                <svg viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" class="icon">
+                  <path
+                    d="M11.9972 0.752602L2.74463 10.0052L0.760742 16.2391L6.99463 14.2552L16.2472 5.0026C16.2472 5.0026 16.1764 3.51439 14.8306 2.16927C13.4847 0.823435 11.9972 0.752602 11.9972 0.752602ZM12.2629 1.90364C13.0222 2.04814 13.6267 2.3698 14.0932 2.84855C14.5596 3.32729 14.8879 3.96312 15.0962 4.73698L13.8123 6.02083L10.979 3.1875L11.9972 2.16927L12.2629 1.90364ZM3.52629 10.7149C3.53466 10.717 4.37801 10.9303 5.2238 11.776C6.14463 12.626 6.2863 13.4058 6.2863 13.4058L6.31673 13.4417L3.80298 14.2511L2.74325 13.1913L3.52629 10.7149Z"
+                    fill="#4A85F6"
+                  />
+                </svg>
+              </div>
+              <div class="iconaction">
+                <svg
+                  viewBox="0 0 14 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon"
+                >
+                  <path
+                    d="M4.77344 -0.0234375C4.4248 -0.0234375 4.14062 0.260742 4.14062 0.609375V2.76562C2.10156 2.99707 0.695312 3.46582 0.695312 4.00781V5.03906C0.695312 5.25 0.920898 5.44336 1.30469 5.625C2.30957 6.09668 4.4834 6.42188 7 6.42188C9.51953 6.42188 11.6875 6.09668 12.6953 5.625C13.0762 5.44336 13.3047 5.25 13.3047 5.03906V4.00781C13.3047 3.44824 11.7842 2.96191 9.625 2.74219V0.609375C9.625 0.260742 9.34082 -0.0234375 8.99219 -0.0234375H4.77344ZM5.40625 1.125H8.38281C8.44727 1.125 8.47656 1.42676 8.47656 1.80469V2.64844C7.99902 2.625 7.51562 2.60156 7 2.60156C6.4668 2.60156 5.94531 2.62207 5.45312 2.64844L5.28906 2.67188V1.80469C5.28906 1.42676 5.34473 1.125 5.40625 1.125ZM1.58594 7.14844C1.51855 7.21875 1.4834 7.2832 1.46875 7.35938V7.40625C1.46875 7.41797 1.46582 7.44434 1.46875 7.45312L1.89062 16.2656C1.92871 16.957 2.72852 18 7 18C11.2715 18 12.0713 16.957 12.1094 16.2656L12.5312 7.45312C12.5312 7.44141 12.5312 7.41797 12.5312 7.40625V7.35938C12.5195 7.2832 12.4814 7.21875 12.4141 7.14844C11.8633 7.70801 9.64551 7.78125 7 7.78125C4.35449 7.78125 2.13965 7.70801 1.58594 7.14844Z"
+                    fill="#4A85F6"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script setup>
+import HeaderLayout from "@/components/HeaderLayout.vue";
+const lists = [
+  {
+    name: "Lorem ipsum",
+    date: "April 9,2022",
+    des:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+  },
+  {
+    name: "Lorem ipsum",
+    date: "April 9,2022",
+    des:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+  },
+  {
+    name: "Lorem ipsum",
+    date: "April 9,2022",
+    des:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+  },
+  {
+    name: "Lorem ipsum",
+    date: "April 9,2022",
+    des:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+  },
+  {
+    name: "Lorem ipsum",
+    date: "April 9,2022",
+    des:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+  },
+  {
+    name: "Lorem ipsum",
+    date: "April 9,2022",
+    des:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+  },
+  {
+    name: "Lorem ipsum",
+    date: "April 9,2022",
+    des:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+  },
+  {
+    name: "Lorem ipsum",
+    date: "April 9,2022",
+    des:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+  },
+];
+const selected = 0;
+const months = [
+  { val: 0, text: "This Month", disabled: true },
+  { val: 1, text: "1th" },
+  { val: 2, text: "2th" },
+  { val: 3, text: "3th" },
+];
+
+const docs = [
+  { val: 0, text: "Documents", disabled: true },
+  { val: 1, text: "doc1" },
+  { val: 2, text: "doc2" },
+  { val: 3, text: "doc3" },
+];
+</script>
+
+<style scoped>
+.main {
+  background-color: #f5f5f5;
+  padding-inline: 30px;
+  padding-top: 20px;
+}
+.title {
+  margin-left: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #4a85f6;
+}
+.search {
+  display: flex;
+  flex-direction: row;
+  padding-block: 20px;
+}
+.searchinput {
+  border-radius: 15px;
+  border-width: 0;
+  padding-left: 30px;
+  padding-block: 10px;
+  display: flex;
+  width: 80%;
+  margin-right: 20px;
+  height: 30px;
+}
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: #c5cee0;
+  cursor: pointer;
+}
+
+.right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+}
+.right span {
+  font-size: 23px;
+}
+.sort,
+.filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-inline: 20px;
+}
+.sort span {
+  font-weight: 550;
+}
+.icon2 {
+  width: 10px;
+  height: 10px;
+}
+.choose {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+.iconchoose {
+  display: flex;
+  flex-direction: row;
+  width: 23%;
+  justify-content: space-between;
+}
+.diviconchoose {
+  display: flex;
+  padding: 20px;
+  border: 1px solid #dddfe1;
+  cursor: pointer;
+}
+.diviconchoose svg {
+  width: 20px;
+  height: 20px;
+}
+.diviconchoose span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconchoose {
+  width: 24%;
+}
+.buttonchoose {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  margin-left: 30%;
+  justify-content: space-between;
+}
+.buttonadd {
+  background-color: #4a85f6;
+  padding: 25px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.iconadd {
+  width: 15px;
+  height: 15px;
+  fill: #ffffff;
+}
+.btcdetail {
+  display: flex;
+  border: 1px solid #dddfe1;
+  align-items: center;
+  padding: 20px;
+  width: 300px;
+  cursor: pointer;
+}
+.btcdetail span {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+.name {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  gap: 10px;
+}
+.namedown {
+  color: #464e5f66;
+}
+.intro {
+  width: 32%;
+  color: #464e5f66;
+}
+.listdetails {
+  display: flex;
+  padding: 15px;
+  background-color: #ecf0f3;
+  border-radius: 7px;
+}
+.listdetail {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  padding-inline-start: 20px;
+  padding-inline-end: 60px;
+}
+.list {
+  border-radius: 7px;
+  background-color: #ffffff;
+  margin-block: 30px;
+  padding-block: 30px;
+}
+.titlelist {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #edf2f6;
+  padding-inline: 30px;
+  padding-block-end: 30px;
+}
+.titlelistup {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.titlelistdown {
+  color: #464e5f;
+}
+.details {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-bottom: 1px solid #edf2f6;
+  padding-block: 15px;
+  padding-inline-start: 70px;
+}
+.icondocument {
+  width: 15px;
+  height: 15px;
+  fill: #4a85f6;
+}
+.action {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: end;
+}
+.iconaction {
+  padding: 10px;
+  border: 1px solid #dddfe1;
+  border-radius: 5px;
+}
+</style>
