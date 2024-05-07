@@ -1,7 +1,6 @@
 <template>
     <div class="container">
-        <form @submit.prevent="handleLogin" class="form">
-        @csrf
+        <form @submit.prevent="handleLogin" class="form" method="post">
             <h2>Đăng nhập</h2>
             <div class="formLogin">
                 <div class="username">
@@ -59,14 +58,27 @@ export default {
     },
     methods: {
         handleLogin() {
-            try {
-                const response = axios.post("http://127.0.0.1:8000/api/login", {
-                    email: this.email,
-                    password: this.password,
+            // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            // console.log("csrfToken: " + csrfToken);
+            axios
+                .post(
+                    "http://127.0.0.1:8000/api/login",
+                    {
+                        email: this.email,
+                        password: this.password,
+                    },
+                    // {
+                    //     headers: {
+                    //         "X-CSRF-TOKEN": csrfToken,
+                    //     },
+                    // }
+                )
+                .then((response) => {
+                    console.log("Response:", response.data);
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
                 });
-            } catch (error) {
-                console.log(error);
-            }
         },
     },
 };

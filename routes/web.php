@@ -17,7 +17,7 @@ Route::middleware('auth:santcum')->get('/user',function(Request $request){
 
 // Route::get('/login', [Login::class, 'create'])->name('login');
 
-// Route::view('/', "App");
+Route::view('/', "App");
 // Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
 // Route::view('/helloworld', 'helloworld');

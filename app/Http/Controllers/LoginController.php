@@ -12,6 +12,6 @@ class LoginController extends Controller
     }
     public function login()
     {
-        echo "Success";die();
+        echo "Success cc";die();
     }
 }

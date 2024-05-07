@@ -1,16 +1,17 @@
 import "./bootstrap";
 import { createApp } from "vue";
 import App from "./App.vue";
+import VueCookies from "vue-cookies";
 import { createRouter, createWebHistory } from "vue-router";
-import VueAxios from 'vue-axios';
-import axios from 'axios';
+import VueAxios from "vue-axios";
+import axios from "axios";
 import { store } from "../../storage/store/store";
-import DashBoard from '../js/pages/DashBoard.vue';
+import DashBoard from "../js/pages/DashBoard.vue";
 import PhotoPage from "../js/pages/PhotoPage.vue";
 import UsersPage from "../js/pages/UsersPage.vue";
 import DocumentPage from "../js/pages/DocumentPage.vue";
 import TestPage from "../js/pages/Test/TestPage.vue";
-import PaginationLayout from './components/PaginationLayout.vue'
+import PaginationLayout from "./components/PaginationLayout.vue";
 import HierarchyPage from "../js/pages/HierarchyPage.vue";
 import TestModal from "../js/pages/Test/TestModal.vue";
 import AddModal from "../js/pages/Test/AddModal.vue";
@@ -21,7 +22,6 @@ import Register from "../js/pages/Test/RegisterPage.vue";
 import Login from "../js/pages/Test/LoginPage.vue";
 import PostIndex from "../js/pages/PostIndex.vue";
 const routes = [
-
     { path: "/App", component: App },
     { path: "/DashBoard", component: DashBoard },
     { path: "/PhotoPage", component: PhotoPage },
@@ -44,5 +44,13 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
 });
-
-createApp(App).use(router).use(store).use(VueAxios,axios).mount("#app");
+axios.defaults.headers.common["X-CSRF-TOKEN"] = document
+    .querySelector('meta[name="csrf-token"]')
+    .getAttribute("content");
+    
+createApp(App)
+    .use(router)
+    .use(store)
+    .use(VueCookies)
+    .use(VueAxios, axios)
+    .mount("#app");
