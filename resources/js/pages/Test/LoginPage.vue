@@ -7,7 +7,7 @@
                     <label>Tên đăng nhập:</label>
                     <input
                         type="text"
-                        v-model="email"
+                        v-model="dataUser.email"
                         placeholder="Tên đăng nhập"
                     />
                 </div>
@@ -15,7 +15,7 @@
                     <label>Mật khẩu:</label>
                     <input
                         type="password"
-                        v-model="password"
+                        v-model="dataUser.password"
                         placeholder="Mật khẩu"
                     />
                 </div>
@@ -47,40 +47,44 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import axios from "axios";
-export default {
-    data() {
-        return {
-            email: "",
-            password: "",
-        };
-    },
-    methods: {
-        handleLogin() {
-            // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            // console.log("csrfToken: " + csrfToken);
-            axios
-                .post(
-                    "http://127.0.0.1:8000/api/login",
-                    {
-                        email: this.email,
-                        password: this.password,
-                    },
-                    // {
-                    //     headers: {
-                    //         "X-CSRF-TOKEN": csrfToken,
-                    //     },
-                    // }
-                )
-                .then((response) => {
-                    console.log("Response:", response.data);
-                })
-                .catch((error) => {
-                    console.error("Error:", error);
-                });
-        },
-    },
+import { ref } from "vue";
+import { useRouter } from 'vue-router'
+
+const router = useRouter();
+const dataUser = ref({
+    email: "",
+    password: "",
+});
+
+const handleLogin = async () => {
+    // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    // console.log("csrfToken: " + csrfToken);
+    console.log("Email send: ", dataUser.value.email);
+    console.log("Password send: ", dataUser.value.password);
+    try {
+        const response = await axios.post("http://127.0.0.1:8000/api/login", {
+            email: dataUser.value.email,
+            password: dataUser.value.password,
+        });
+        if (response.status === 200) {
+            alert("Đăng nhập thành công!");
+            router.push('/Dashboard' );
+        } else {
+            alert("Đăng nhập thất bại!");
+        }
+
+        // {
+        //     headers: {
+        //         "X-CSRF-TOKEN": csrfToken,
+        //     },
+        // }
+
+        console.log("Response: ", response.data);
+    } catch (error) {
+        console.error("Error:", error);
+    }
 };
 </script>
 
