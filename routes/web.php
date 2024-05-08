@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostIndexController;
+use App\Http\Controllers\RegisterController;
 // use App\Http\Controllers\RegisterController;
 use Illuminate\Http\Request;
 // use Illuminate\Auth\Events\Login;
@@ -23,6 +24,7 @@ Route::view('/', "App");
 // Route::view('/helloworld', 'helloworld');
 
 Route::post('/api/login', [LoginController::class, 'login']);
+Route::post('/api/register', [RegisterController::class, 'register']);
 
 Route::get('/api/posts',PostIndexController::class);
 // Route::post('/api/posts',PostIndexController::class);

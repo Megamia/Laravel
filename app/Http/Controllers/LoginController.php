@@ -31,10 +31,9 @@ class LoginController extends Controller
 
         $users = User::all();
         // echo "User: " . $users;
-
         foreach ($users as $user) {
             if ($email === $user->email  && $password === $user->password) {
-                return response()->json(['message' => 'Success'], 200);
+                return response()->json(['message' => 'Success', 'data' => $user], 200);
             }
         }
 

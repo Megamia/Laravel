@@ -4,11 +4,11 @@
             <h2>Đăng nhập</h2>
             <div class="formLogin">
                 <div class="username">
-                    <label>Tên đăng nhập:</label>
+                    <label>Email:</label>
                     <input
-                        type="text"
+                        type="email"
                         v-model="dataUser.email"
-                        placeholder="Tên đăng nhập"
+                        placeholder="Email"
                     />
                 </div>
                 <div class="password">
