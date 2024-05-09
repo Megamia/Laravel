@@ -14,12 +14,20 @@ class RegisterController extends Controller
     {
         $data = $request->only(['name', 'email', 'password']);
 
+        $existingUser = User::where('email', $data['email'])->first();
+        if ($existingUser) {
+            return response()->json(['message' => 'User already exists'], 201);
+        }
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
 
-        return response()->json(['message' => 'User registered successfully'], 200);
+        return response()->json([
+            'message' => 'User registered successfully'
+            // , 'data' => $user
+        ], 200);
     }
 }

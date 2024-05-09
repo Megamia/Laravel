@@ -1,58 +1,69 @@
 <template>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="btn btn-danger">Register User</h1>
-                    <div>
-                        <p>Name:</p>
-                        <input
-                            placeholder="Name"
-                            type="text"
-                            v-model="dataUser.name"
-                        />
-                    </div>
-                    <div>
-                        <p>Email:</p>
-                        <input
-                            type="email"
-                            v-model="dataUser.email"
-                            placeholder="Email"
-                        />
-                    </div>
-                    <div>
-                        <p>Password:</p>
-                        <input
-                            placeholder="Password"
-                            type="password"
-                            v-model="dataUser.password"
-                        />
-                    </div>
-                    <!-- <div>
-                        <p>Passowrd confirmation:</p>
-                        <input
-                            placeholder="passowrd_confirmation"
-                            type="password"
-                            v-model="form.passowrd_confirmation"
-                        />
-                    </div> -->
+    <div class="container">
+        <form @submit.prevent="handleRegister" class="form" method="post">
+            <h2>Đăng ký</h2>
+            <div class="formRegister">
+                <div class="name">
+                    <label>Name:</label>
+                    <input
+                        type="text"
+                        v-model="dataUser.name"
+                        placeholder="Name"
+                        required
+                    />
                 </div>
-                <div class="button">
-                    <router-link to="/Login" class="link">Login</router-link>
-
-                    <button @click.prevent="handleRegister" type="submit">
-                        Register
-                    </button>
+                <div class="username">
+                    <label>Email:</label>
+                    <input
+                        type="email"
+                        v-model="dataUser.email"
+                        placeholder="Email"
+                        required
+                    />
+                </div>
+                <div class="password">
+                    <label>Mật khẩu:</label>
+                    <input
+                        type="password"
+                        v-model="dataUser.password"
+                        placeholder="Mật khẩu"
+                        required
+                    />
                 </div>
             </div>
+            <div class="button">
+            <router-link to="/Login">Đăng nhập</router-link>
+                <button type="submit">Đăng ký</button>
+            </div>
+        </form>
+        <!-- <div class="user">
+            <p>Tên đăng nhập</p>
+            <input
+                type="text"
+                placeholder="Tên đăng nhập"
+                v-model="form.email"
+            />
         </div>
-        <div class="col-md-4"></div>
+        <div class="password">
+            <p>Mật khẩu</p>
+            <input
+                type="password"
+                placeholder="Mật khẩu"
+                v-model="form.password"
+            />
+        </div>
+        <div class="button">
+            <button @click="login" type="submit">Login</button>
+            <router-link to="/Register">Register</router-link>
+        </div> -->
     </div>
 </template>
 <script setup>
 import axios from "axios";
 import { ref } from "vue";
+import { useRouter } from 'vue-router'
 
+const router = useRouter();
 const dataUser = ref({
     name: "",
     email: "",
@@ -62,9 +73,9 @@ const dataUser = ref({
 const handleRegister = async () => {
     // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     // console.log("csrfToken: " + csrfToken);
-    console.log("Name send: ", dataUser.value.name);
-    console.log("Email send: ", dataUser.value.email);
-    console.log("Password send: ", dataUser.value.password);
+    // console.log("Name send: ", dataUser.value.name);
+    // console.log("Email send: ", dataUser.value.email);
+    // console.log("Password send: ", dataUser.value.password);
 
     try {
         const response = await axios.post(
@@ -75,12 +86,12 @@ const handleRegister = async () => {
                 password: dataUser.value.password,
             }
         );
-        // if (response.status === 200) {
-        //     alert("Đăng nhập thành công!");
-        //     router.push('/Dashboard' );
-        // } else {
-        //     alert("Đăng nhập thất bại!");
-        // }
+        if (response.status === 200) {
+            alert("Đăng ký thành công!");
+            router.push('/Login');
+        } else {
+            alert("Đăng ký thất bại!");
+        }
 
         // {
         //     headers: {
@@ -96,8 +107,56 @@ const handleRegister = async () => {
 </script>
 
 <style scoped>
+.container {
+    display: flex;
+    justify-content: center;
+    .submit {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        margin-top: 30px;
+        button {
+            font-size: 30px;
+        }
+    }
+}
+
+.name,
+.username,
+.password {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    gap: 20px;
+    label {
+        display: flex;
+        flex: 1;
+    }
+}
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap:30px;
+    h2 {
+        display: flex;
+        justify-content: center;
+        font-size: 40px;
+    }
+    .formRegister {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        font-size: 30px;
+    }
+}
 .button {
     display: flex;
+    justify-content: space-between;
     gap: 30px;
+    font-size: 30px;
+    button{
+        font-size: 30px;
+    }
 }
 </style>

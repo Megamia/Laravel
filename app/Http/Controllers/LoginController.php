@@ -29,12 +29,14 @@ class LoginController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
-        $users = User::all();
-        // echo "User: " . $users;
-        foreach ($users as $user) {
-            if ($email === $user->email  && $password === $user->password) {
-                return response()->json(['message' => 'Success', 'data' => $user], 200);
-            }
+        $user = User::where('email', $email)->first();
+
+        if (!$user) {
+            return response()->json(['message' => 'Fail'], 201);
+        }
+
+        if (password_verify($password, $user->password)) {
+            return response()->json(['message' => 'Success', 'data' => $user], 200);
         }
 
         return response()->json(['message' => 'Fail'], 201);
