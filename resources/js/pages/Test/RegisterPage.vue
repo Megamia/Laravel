@@ -32,8 +32,12 @@
                 </div>
             </div>
             <div class="button">
-            <router-link to="/Login">Đăng nhập</router-link>
-                <button type="submit">Đăng ký</button>
+                <router-link
+                    to="/Login"
+                    style="color: black; text-decoration: none"
+                    >Đăng nhập</router-link
+                >
+                <button type="submit" style="cursor: pointer">Đăng ký</button>
             </div>
         </form>
         <!-- <div class="user">
@@ -61,7 +65,7 @@
 <script setup>
 import axios from "axios";
 import { ref } from "vue";
-import { useRouter } from 'vue-router'
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 const dataUser = ref({
@@ -88,7 +92,7 @@ const handleRegister = async () => {
         );
         if (response.status === 200) {
             alert("Đăng ký thành công!");
-            router.push('/Login');
+            router.push("/Login");
         } else {
             alert("Đăng ký thất bại!");
         }
@@ -137,7 +141,7 @@ const handleRegister = async () => {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap:30px;
+    gap: 30px;
     h2 {
         display: flex;
         justify-content: center;
@@ -155,7 +159,7 @@ const handleRegister = async () => {
     justify-content: space-between;
     gap: 30px;
     font-size: 30px;
-    button{
+    button {
         font-size: 30px;
     }
 }

@@ -50,7 +50,7 @@
 <script setup>
 import axios from "axios";
 import { ref } from "vue";
-import { useRouter } from 'vue-router'
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 const dataUser = ref({
@@ -61,8 +61,8 @@ const dataUser = ref({
 const handleLogin = async () => {
     // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     // console.log("csrfToken: " + csrfToken);
-    console.log("Email send: ", dataUser.value.email);
-    console.log("Password send: ", dataUser.value.password);
+    // console.log("Email send: ", dataUser.value.email);
+    // console.log("Password send: ", dataUser.value.password);
     try {
         const response = await axios.post("http://127.0.0.1:8000/api/login", {
             email: dataUser.value.email,
@@ -70,7 +70,7 @@ const handleLogin = async () => {
         });
         if (response.status === 200) {
             alert("Đăng nhập thành công!");
-            router.push('/Dashboard' );
+            router.push("/Dashboard");
         } else {
             alert("Đăng nhập thất bại!");
         }
