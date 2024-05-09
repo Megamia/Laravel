@@ -41,15 +41,19 @@
                 <ul>
                     <li>1</li>
                     <li>2</li>
-                    <li>3</li>
-                    <li @click="login">
-                        <!-- <router-link :to="{ name: 'LogIN' }">Login</router-link> -->
-                        <!-- <RouterLink to="Login">Login</RouterLink> -->
-                        Login
-                    </li>
+
+                    <router-link to="/Login">
+                        <li>Login</li>
+                    </router-link>
+
+                    <li @click="login">Login</li>
+
                     <li>
-                        <RouterLink to="Register">Register</RouterLink>
+                        <RouterLink to="/Register" style="display: flex">
+                            Register
+                        </RouterLink>
                     </li>
+                    
                 </ul>
             </div>
         </div>
@@ -133,11 +137,14 @@ export default {
         cursor: pointer;
         a {
             text-decoration: none;
-            color: red;
         }
     }
     ul li:hover {
         background-color: aqua;
+    }
+    ul a{
+        text-decoration: none;
+        color:black
     }
 }
 
