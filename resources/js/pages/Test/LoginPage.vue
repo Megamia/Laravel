@@ -9,6 +9,7 @@
                         type="email"
                         v-model="dataUser.email"
                         placeholder="Email"
+                        required
                     />
                 </div>
                 <div class="password">
@@ -17,6 +18,7 @@
                         type="password"
                         v-model="dataUser.password"
                         placeholder="Mật khẩu"
+                        required
                     />
                 </div>
             </div>

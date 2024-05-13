@@ -1,7 +1,9 @@
 <template>
     <div class="mainheader">
         <div class="user">
-            <span class="hi">Hello, Lekan</span>
+            <span class="hi">
+                Hello, {{ dataUser.name ? dataUser.name : "Admin" }}
+            </span>
             <!-- <button class="btn btn-primary" @click="goToLogin">Log In</button> -->
             <span class="wishing">Have a nice day</span>
         </div>
@@ -42,48 +44,57 @@
                     <li>1</li>
                     <li>2</li>
 
-                    <router-link to="/Login">
-                        <li>Login</li>
-                    </router-link>
-
-                    <li @click="login">Login</li>
+                    <li>
+                        <RouterLink to="/Login" style="display: flex">
+                            Login
+                        </RouterLink>
+                    </li>
 
                     <li>
                         <RouterLink to="/Register" style="display: flex">
                             Register
                         </RouterLink>
                     </li>
-                    
+                    <li @click="logout">Logout</li>
                 </ul>
             </div>
         </div>
     </div>
 </template>
-<script>
-import { RouterLink } from "vue-router";
-export default {
-    name: "HeaderLayout",
-    data() {
-        return {
-            isDropdownVisible: false,
-        };
-    },
+<script setup>
+// import axios from "axios";
+import axios from "axios";
+import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
 
-    methods: {
-        // goToLogin(){
-        //   this.$router.push("/LogIn");
-        // }
-        show() {
-            alert("Menu");
-        },
-        showDropdown() {
-            this.isDropdownVisible = !this.isDropdownVisible;
-        },
-        login() {
-            this.$router.push("/LogIn");
-        },
-    },
+const router = useRouter();
+let isDropdownVisible = ref(false);
+const dataUser = ref("");
+const showDropdown = () => {
+    isDropdownVisible.value = !isDropdownVisible.value;
+    // console.log(isDropdownVisible.value);
 };
+// const login = () => {
+//     router.push("/Login");
+// };
+// const show = () => {
+//     console.log("Data cua user: ", dataUser.value);
+// };
+const logout = async () => {
+    const response = await axios.get("http://127.0.0.1:8000/api/logout");
+    if (response.status === 200) {
+        alert("Đăng xuất thành công");
+
+    }
+};
+onMounted(async () => {
+    const response = await axios.get("http://127.0.0.1:8000/api/dashboard");
+    if (response.status === 200) {
+        dataUser.value = response.data.dataUser;
+    } else {
+        
+    }
+});
 </script>
 
 <style scoped>
@@ -142,9 +153,9 @@ export default {
     ul li:hover {
         background-color: aqua;
     }
-    ul a{
+    ul a {
         text-decoration: none;
-        color:black
+        color: black;
     }
 }
 

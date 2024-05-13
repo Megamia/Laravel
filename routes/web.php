@@ -24,9 +24,13 @@ Route::view('/', "App");
 // Route::view('/helloworld', 'helloworld');
 
 Route::post('/api/login', [LoginController::class, 'login']);
+Route::get('/api/logout', [LoginController::class, 'logout']);
 Route::post('/api/register', [RegisterController::class, 'register']);
 
 Route::get('/api/posts',PostIndexController::class);
+Route::get('/api/dashboard', [LoginController::class, 'dashboard']);
+
+
 // Route::post('/api/posts',PostIndexController::class);
 // Route::post('/register','RegisterController@register');
 // Route::post('/login','LoginController@login');

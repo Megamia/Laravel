@@ -19,7 +19,7 @@ import PostIndex from "./pages/PostIndex.vue";
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: "/", component: App, name: "App" },
+        // { path: "/", component: App, name: "App" },
         { path: "/DashBoard", component: DashBoard, name: "DashBoard" },
         { path: "/PhotoPage", component: PhotoPage, name: "PhotoPage" },
         { path: "/UsersPage", component: UsersPage, name: "UsersPage" },
