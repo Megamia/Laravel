@@ -6,7 +6,12 @@
         <div class="router">
             <div class="page page1">
                 <span class="list">
-                    <router-link to="/DashBoard" class="link">
+                    <router-link
+                        to="/DashBoard"
+                        class="link"
+                        @click="handlePageChange('DashBoard')"
+                        :class="{ act: currentPage === 'DashBoard' }"
+                    >
                         <svg
                             version="1.1"
                             id="Capa_1"
@@ -26,7 +31,12 @@
                     >
                 </span>
                 <span class="list">
-                    <router-link to="/UsersPage" class="link">
+                    <router-link
+                        to="/UsersPage"
+                        class="link"
+                        @click="handlePageChange('UsersPage')"
+                        :class="{ act: currentPage === 'UsersPage' }"
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 448 512"
@@ -39,7 +49,12 @@
                     >
                 </span>
                 <span class="list">
-                    <router-link to="/DocumentPage" class="link">
+                    <router-link
+                        to="/DocumentPage"
+                        class="link"
+                        @click="handlePageChange('DocumentPage')"
+                        :class="{ act: currentPage === 'DocumentPage' }"
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 384 512"
@@ -52,7 +67,12 @@
                     >
                 </span>
                 <span class="list">
-                    <router-link to="/TestModal" class="link">
+                    <router-link
+                        to="/TestModal"
+                        class="link"
+                        @click="handlePageChange('TestModal')"
+                        :class="{ act: currentPage === 'TestModal' }"
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512"
@@ -65,7 +85,12 @@
                     >
                 </span>
                 <span class="list">
-                    <router-link to="/HierarchyPage" class="link">
+                    <router-link
+                        to="/HierarchyPage"
+                        class="link"
+                        @click="handlePageChange('HierarchyPage')"
+                        :class="{ act: currentPage === 'HierarchyPage' }"
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 576 512"
@@ -80,7 +105,12 @@
             </div>
             <div class="page page2">
                 <span class="list">
-                    <router-link to="/TestPage" class="link">
+                    <router-link
+                        to="/TestPage"
+                        class="link"
+                        @click="handlePageChange('TestPage')"
+                        :class="{ act: currentPage === 'TestPage' }"
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512"
@@ -93,7 +123,12 @@
                     >
                 </span>
                 <span class="list">
-                    <router-link to="/Post" class="link">
+                    <router-link
+                        to="/Post"
+                        class="link"
+                        @click="handlePageChange('Post')"
+                        :class="{ act: currentPage === 'Post' }"
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512"
@@ -106,7 +141,12 @@
                     >
                 </span>
                 <span class="list">
-                    <router-link to="/FilterComponent" class="link">
+                    <router-link
+                        to="/FilterComponent"
+                        class="link"
+                        @click="handlePageChange('FilterComponent')"
+                        :class="{ act: currentPage === 'FilterComponent' }"
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512"
@@ -123,22 +163,19 @@
     </div>
 </template>
 
-<script>
-import TestModal from "../pages/Test/TestModal.vue";
+<script setup>
+import { ref, onMounted } from "vue";
 
-// import TestModal from "../pages/Test/TestModal.vue";
-export default {
-    
+const currentPage = ref(localStorage.getItem("currentPage") || "DashBoard");
 
-    name: "SiderBar",
-
-    components: {
-        TestModal,
-    },
-    // created() {
-    //         this.$router.push("/Dashboard");
-    // } 
+const handlePageChange = (page) => {
+    currentPage.value = page;
+    localStorage.setItem("currentPage", page);
 };
+
+onMounted(() => {
+    localStorage.removeItem("currentPage");
+});
 </script>
 
 <style scoped>
@@ -172,13 +209,13 @@ export default {
     margin-right: 10px;
 }
 
-.active {
+/* .active {
     border-right: 3px solid #0d99ff !important;
     fill: #0d99ff !important;
     font-weight: bold !important;
     color: #0d99ff !important;
-}
-.router-link-active {
+} */
+.act {
     border-right: 3px solid #0d99ff !important;
     fill: #0d99ff !important;
     font-weight: bold !important;

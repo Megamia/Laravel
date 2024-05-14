@@ -2,7 +2,7 @@
   <div class="result">
     <p>Kết quả là {{ result }}</p>
     <p v-for="user in users" :key="user.Name">Username: {{ user.Name }}</p>
-    <button>Text: {{ text }}</button>
+    <!-- <button>Text: {{ text }}</button> -->
     <span>Props:{{ userWithEmail }} </span>
   </div>
 </template>
@@ -11,8 +11,6 @@
 import { useStore } from "vuex";
 import { computed } from "vue";
 export default {
-  props: ["userWithEmail"],
-
   // data() {
   //   return {
   //     users: [
@@ -50,6 +48,8 @@ export default {
 
     return { result, users };
   },
+
+  props: ["userWithEmail"]
 };
 </script>
 

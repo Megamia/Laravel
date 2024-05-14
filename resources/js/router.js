@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import App from "./App.vue";
+// import App from "./App.vue";
 import DashBoard from "./pages/DashBoard.vue";
 import PhotoPage from "./pages/PhotoPage.vue";
-import UsersPage from "./pages/UsersPage.vue";
 import DocumentPage from "./pages/DocumentPage.vue";
 import TestPage from "./pages/Test/TestPage.vue";
 import PaginationLayout from "./components/PaginationLayout.vue";
@@ -15,12 +14,17 @@ import FilterComponent from "./pages/Test/Search/FilterComponent.vue";
 import LoginPage from "./pages/Test/LoginPage.vue";
 import RegisterPage from "./pages/Test/RegisterPage.vue";
 import PostIndex from "./pages/PostIndex.vue";
+import UsersPage from "./pages/UsersPage.vue";
+// import SiderBar from "./components/SiderBar.vue";
+// import HelloWorld from "./components/HelloWorld.vue";
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        // { path: "/", component: App, name: "App" },
+        // { path: "/", component: HelloWorld, name: "App" },
+        { path: "/", component: DashBoard, name: "App" },
         { path: "/DashBoard", component: DashBoard, name: "DashBoard" },
+
         { path: "/PhotoPage", component: PhotoPage, name: "PhotoPage" },
         { path: "/UsersPage", component: UsersPage, name: "UsersPage" },
         { path: "/DocumentPage", component: DocumentPage, name: "DocumentPage" },

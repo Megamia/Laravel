@@ -28,6 +28,7 @@ class LoginController extends Controller
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $request->session()->put('LoginId', $user->id);
+                $request->session()->put('LoginExpires', now()->addMinutes(60));
                 return response()->json(['message' => 'Success', 'data' => $user], 200);
             } else {
                 return response()->json(['message' => 'Fail'], 201);
@@ -38,11 +39,11 @@ class LoginController extends Controller
     }
 
     public function logout(Request $request)
-{
-    $request->session()->forget('LoginId'); 
-    //  $request->session()->flush() 
-    return response()->json(['message' => 'Logged out'], 200);
-}
+    {
+        $request->session()->forget('LoginId');
+        //  $request->session()->flush() 
+        return response()->json(['message' => 'Logged out'], 200);
+    }
 
     public function dashboard(Request $request)
     {
@@ -54,7 +55,7 @@ class LoginController extends Controller
             if ($user) {
                 return response()->json(['message' => 'Success', 'dataUser' => $user], 200);
             } else {
-                return response()->json(['message' => 'Fail'], 201);
+                return response()->json(['message' => 'Fail', 'dataUser' => 'Admin'], 201);
             }
         } else {
             return response()->json(['message' => 'This user doesn\'t exist'], 201);

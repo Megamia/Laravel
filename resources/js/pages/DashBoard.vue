@@ -1,5 +1,4 @@
 <template>
-    <HeaderLayout />
     <div class="main">
         <div class="Users Dashboard">
             <div class="title">
@@ -145,11 +144,10 @@
 </template>
 
 <script setup>
-import HeaderLayout from "@/components/HeaderLayout.vue";
 import TestModal from "./Test/TestModal.vue";
 import { ref, computed, onMounted } from "vue";
 import { useStore } from "vuex";
-import axios from "axios";
+// import axios from "axios";
 
 const isOpen = ref(false);
 const store = useStore();

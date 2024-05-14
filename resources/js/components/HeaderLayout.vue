@@ -1,9 +1,7 @@
 <template>
     <div class="mainheader">
         <div class="user">
-            <span class="hi">
-                Hello, {{ dataUser.name ? dataUser.name : "Admin" }}
-            </span>
+            <span class="hi"> Hello, {{ dataUser }} </span>
             <!-- <button class="btn btn-primary" @click="goToLogin">Log In</button> -->
             <span class="wishing">Have a nice day</span>
         </div>
@@ -23,7 +21,7 @@
                 <div class="settinguser">
                     <div class="avt"></div>
                     <div class="nameNpermission">
-                        <span class="name">Lekan Okeowo</span>
+                        <span class="name">{{ dataUser }}</span>
                         <span class="permission">Admin</span>
                     </div>
                     <div class="divicon2" @click="showDropdown">
@@ -64,36 +62,48 @@
 <script setup>
 // import axios from "axios";
 import axios from "axios";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-let isDropdownVisible = ref(false);
+const isDropdownVisible = ref(false);
 const dataUser = ref("");
 const showDropdown = () => {
     isDropdownVisible.value = !isDropdownVisible.value;
-    // console.log(isDropdownVisible.value);
 };
-// const login = () => {
-//     router.push("/Login");
-// };
-// const show = () => {
-//     console.log("Data cua user: ", dataUser.value);
-// };
+const handleClickOutside = (event) => {
+    const dropdown = document.querySelector(".divicon2");
+
+    if (dropdown && !dropdown.contains(event.target)) {
+        isDropdownVisible.value = false;
+    }
+};
+
+onMounted(() => {
+    document.addEventListener("click", handleClickOutside);
+});
+
+onUnmounted(() => {
+    document.removeEventListener("click", handleClickOutside);
+});
+
 const logout = async () => {
     const response = await axios.get("http://127.0.0.1:8000/api/logout");
     if (response.status === 200) {
         alert("Đăng xuất thành công");
-
+        dataUser.value = "Admin";
     }
 };
 onMounted(async () => {
     const response = await axios.get("http://127.0.0.1:8000/api/dashboard");
     if (response.status === 200) {
-        dataUser.value = response.data.dataUser;
-    } else {
-        
+        dataUser.value = response.data.dataUser.name;
+        // console.log(dataUser.value);
+    } else if (response.status === 201) {
+        dataUser.value = "Admin";
+        // console.log(dataUser.value);
     }
+    return dataUser.value;
 });
 </script>
 
