@@ -22,8 +22,18 @@
                     />
                 </div>
             </div>
-            <div class="submit">
-                <button>Đăng nhập</button>
+            <div class="action">
+                <div class="button">
+                    <button type="submit">Đăng nhập</button>
+                    <button>
+                        <RouterLink to="/Register"> Đăng ký </RouterLink>
+                    </button>
+                </div>
+                <div class="btnHome">
+                    <button>
+                        <RouterLink to="/"> Home </RouterLink>
+                    </button>
+                </div>
             </div>
         </form>
         <!-- <div class="user">
@@ -94,13 +104,35 @@ const handleLogin = async () => {
 .container {
     display: flex;
     justify-content: center;
-    .submit {
-        display: flex;
-        flex: 1;
-        justify-content: center;
-        margin-top: 30px;
-        button {
-            font-size: 30px;
+    .action {
+        .button {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            margin-top: 30px;
+            button {
+                font-size: 30px;
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
+            }
+        }
+        .btnHome {
+            display: flex;
+            flex: 1;
+            button {
+                display: flex;
+                flex: 1;
+                justify-content: center;
+                margin-top: 30px;
+
+                font-size: 30px;
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
+            }
         }
     }
 }

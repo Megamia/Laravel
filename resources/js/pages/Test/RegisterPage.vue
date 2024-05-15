@@ -31,13 +31,18 @@
                     />
                 </div>
             </div>
-            <div class="button">
-                <router-link
-                    to="/Login"
-                    style="color: black; text-decoration: none"
-                    >Đăng nhập</router-link
-                >
-                <button type="submit" style="cursor: pointer">Đăng ký</button>
+            <div class="action">
+                <div class="button">
+                    <button>
+                        <RouterLink to="/Login"> Đăng nhập </RouterLink>
+                    </button>
+                    <button type="submit">Đăng ký</button>
+                </div>
+                <div class="btnHome">
+                    <button>
+                        <RouterLink to="/"> Home </RouterLink>
+                    </button>
+                </div>
             </div>
         </form>
         <!-- <div class="user">
@@ -114,13 +119,34 @@ const handleRegister = async () => {
 .container {
     display: flex;
     justify-content: center;
-    .submit {
-        display: flex;
-        flex: 1;
-        justify-content: center;
-        margin-top: 30px;
-        button {
-            font-size: 30px;
+    .action {
+        .button {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            button {
+                font-size: 30px;
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
+            }
+        }
+        .btnHome {
+            display: flex;
+            flex: 1;
+            button {
+                display: flex;
+                flex: 1;
+                justify-content: center;
+                margin-top: 30px;
+
+                font-size: 30px;
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
+            }
         }
     }
 }

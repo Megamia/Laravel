@@ -1,24 +1,42 @@
 <template>
     <div class="hello">
         <div class="SiderBar">
-            <SiderBar />
+            <SiderBar v-if="showSiderBar()" />
         </div>
         <div class="main">
-            <HeaderLayout />
+            <HeaderLayout v-if="showHeaderLayout()" />
             <router-view />
         </div>
     </div>
 </template>
 
-<script>
+<script setup>
 import SiderBar from "./SiderBar.vue";
 import HeaderLayout from "./HeaderLayout.vue";
-export default {
-    name: "HelloWorld",
-    components: {
-        SiderBar,
-        HeaderLayout,
-    },
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+// console.log("route.meta:", route.meta);
+
+const showSiderBar = () => {
+    if (
+        route.meta.requiresAuth === "showSiderbar" ||
+        route.meta.requiresAuth === "showAll"
+    ) {
+        return true;
+    } else {
+        return false;
+    }
+};
+const showHeaderLayout = () => {
+    if (
+        route.meta.requiresAuth === "showHeaderLayout" ||
+        route.meta.requiresAuth === "showAll"
+    ) {
+        return true;
+    } else {
+        return false;
+    }
 };
 </script>
 
