@@ -124,8 +124,12 @@ const handleRegister = async () => {
             display: flex;
             flex: 1;
             justify-content: center;
+            margin-top: 30px;
+
             button {
                 font-size: 30px;
+                cursor: pointer;
+
                 a {
                     text-decoration: none;
                     color: black;
@@ -135,16 +139,20 @@ const handleRegister = async () => {
         .btnHome {
             display: flex;
             flex: 1;
+            margin-top: 30px;
+            cursor: pointer;
             button {
                 display: flex;
                 flex: 1;
                 justify-content: center;
-                margin-top: 30px;
-
                 font-size: 30px;
+                align-items: center;
                 a {
                     text-decoration: none;
                     color: black;
+                    display: flex;
+                    flex: 1;
+                    justify-content: center;
                 }
             }
         }

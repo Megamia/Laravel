@@ -24,10 +24,10 @@
             </div>
             <div class="action">
                 <div class="button">
-                    <button type="submit">Đăng nhập</button>
                     <button>
                         <RouterLink to="/Register"> Đăng ký </RouterLink>
                     </button>
+                    <button type="submit">Đăng nhập</button>
                 </div>
                 <div class="btnHome">
                     <button>
@@ -110,8 +110,11 @@ const handleLogin = async () => {
             flex: 1;
             justify-content: center;
             margin-top: 30px;
+
             button {
                 font-size: 30px;
+                cursor: pointer;
+
                 a {
                     text-decoration: none;
                     color: black;
@@ -121,16 +124,20 @@ const handleLogin = async () => {
         .btnHome {
             display: flex;
             flex: 1;
+            margin-top: 30px;
+            cursor: pointer;
             button {
                 display: flex;
                 flex: 1;
                 justify-content: center;
-                margin-top: 30px;
-
                 font-size: 30px;
+                align-items: center;
                 a {
                     text-decoration: none;
                     color: black;
+                    display: flex;
+                    flex: 1;
+                    justify-content: center;
                 }
             }
         }
