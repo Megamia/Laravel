@@ -153,9 +153,21 @@ onMounted(async () => {
     width: 230px;
     top: 15%;
     right: 3%;
+    font-size: 20px;
+    ul {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        padding-block: 10px;
+        gap:5px;
+    }
     ul li {
+        padding-inline: 20px;
         list-style-type: none;
         cursor: pointer;
+        gap: 50px;
+
         a {
             text-decoration: none;
         }

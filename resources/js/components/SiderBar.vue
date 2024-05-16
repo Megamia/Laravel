@@ -164,7 +164,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 
 const currentPage = ref(localStorage.getItem("currentPage") || "DashBoard");
 
@@ -173,9 +173,9 @@ const handlePageChange = (page) => {
     localStorage.setItem("currentPage", page);
 };
 
-onMounted(() => {
-    localStorage.removeItem("currentPage");
-});
+// onMounted(() => {
+//     localStorage.removeItem("currentPage");
+// });
 </script>
 
 <style scoped>

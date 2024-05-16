@@ -1,20 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Action;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
 use App\Models\User;
-use Illuminate\Console\View\Components\Component;
 
 class LoginController extends Controller
 {
 
-    public function __construct()
-    {
-    }
+   
 
     public function login(Request $request)
     {

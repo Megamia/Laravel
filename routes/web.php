@@ -1,15 +1,17 @@
 <?php
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PostIndexController;
-use App\Http\Controllers\RegisterController;
+
 // use App\Http\Controllers\RegisterController;
+
+use App\Http\Controllers\Action\LoginController;
+use App\Http\Controllers\Action\PostIndexController;
+use App\Http\Controllers\Action\RegisterController;
 use Illuminate\Http\Request;
 // use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware('auth:santcum')->get('/user',function(Request $request){
+Route::middleware('auth:santcum')->get('/user', function (Request $request) {
     return $request->user();
 });
 // Route::get('/', function () {
@@ -27,7 +29,7 @@ Route::post('/api/login', [LoginController::class, 'login']);
 Route::get('/api/logout', [LoginController::class, 'logout']);
 Route::post('/api/register', [RegisterController::class, 'register']);
 
-Route::get('/api/posts',PostIndexController::class);
+Route::get('/api/posts', [PostIndexController::class, 'data']);
 Route::get('/api/dashboard', [LoginController::class, 'dashboard']);
 
 
