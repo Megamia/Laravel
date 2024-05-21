@@ -55,8 +55,10 @@ const handleLogin = async () => {
     // console.log("csrfToken: " + csrfToken);
     // console.log("Email send: ", dataUser.value.email);
     // console.log("Password send: ", dataUser.value.password);
+   // http://127.0.0.1:8000/
+   // ${process.env.APP_URL}
     try {
-        const response = await axios.post("http://127.0.0.1:8000/api/login", {
+        const response = await axios.post(`http://127.0.0.1:8000/api/login`, {
             email: dataUser.value.email,
             password: dataUser.value.password,
         });
@@ -66,7 +68,7 @@ const handleLogin = async () => {
         } else {
             alert("Đăng nhập thất bại!");
         }
-        console.log("Response: ", response.data);
+        // console.log("Response: ", response.data);
     } catch (error) {
         console.error("Error:", error);
     }

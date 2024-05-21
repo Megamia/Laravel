@@ -88,7 +88,7 @@ const handleRegister = async () => {
 
     try {
         const response = await axios.post(
-            "http://127.0.0.1:8000/api/register",
+            "${APP_URL}api/register",
             {
                 name: dataUser.value.name,
                 email: dataUser.value.email,
