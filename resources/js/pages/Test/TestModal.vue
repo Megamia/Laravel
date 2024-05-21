@@ -1,6 +1,5 @@
 <template>
   <div class="root">
-    <!-- <button @click="isOpen = true" class="buttonadduser">Add user +</button> -->
     <template v-for="user in users" :key="user.Name">
       <Teleport to="body">
         <div class="modal" v-if="isOpen">
@@ -50,7 +49,6 @@
                       placeholder="Email ID *"
                       class="nameinput input"
                     />
-                    <!-- v-model="user.Email.value" -->
                     <input
                       type="text"
                       v-model="per"

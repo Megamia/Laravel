@@ -281,7 +281,7 @@ const docs = [
 .iconchoose {
     display: flex;
     flex-direction: row;
-    width: 23%;
+    /* width: 50%; */
     justify-content: space-between;
 }
 .diviconchoose {
@@ -301,14 +301,20 @@ const docs = [
 }
 
 .iconchoose {
-    width: 24%;
+    display: flex;
+    flex: 1;
+    justify-content: start;
+    gap:50px
 }
 .buttonchoose {
     display: flex;
     flex: 1;
     flex-direction: row;
-    margin-left: 30%;
-    justify-content: space-between;
+    justify-content: end;
+    gap:50px;
+    /* margin-left: 30%; */
+    /* justify-content: end;
+    justify-content: space-between */
 }
 .buttonadd {
     background-color: #4a85f6;
@@ -366,7 +372,7 @@ const docs = [
 .list {
     border-radius: 7px;
     background-color: #ffffff;
-    margin-block: 30px;
+    margin-top: 30px;
     padding-block: 30px;
 }
 .titlelist {

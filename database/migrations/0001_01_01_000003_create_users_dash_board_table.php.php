@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('role');
-            $table->string('permission');
-            $table->timestamp('createdate')->nullable();
+            $table->string('role')->default("Lorem Ipsum");
+            $table->string('permission')->default("Employee");
+            $table->timestamp('createdate')->useCurrent();
         });
     }
 

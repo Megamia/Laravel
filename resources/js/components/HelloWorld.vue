@@ -52,13 +52,10 @@ const showHeaderLayout = () => {
 }
 .main {
     display: flex;
-    flex: 1;
+    flex:1;
+    height: 100%;
+    padding-bottom: 50px;
     flex-direction: column;
 }
-.pagination {
-    bottom: 30px;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-}
+
 </style>

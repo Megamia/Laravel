@@ -249,7 +249,6 @@ const filteredUsers = computed(() => {
     flex-direction: column;
     background-color: #ffffff;
     border-radius: 7px;
-    margin-bottom: 200px;
 }
 .loremlist {
     display: flex;
