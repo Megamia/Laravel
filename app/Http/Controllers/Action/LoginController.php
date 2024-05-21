@@ -10,7 +10,7 @@ use App\Models\User;
 class LoginController extends Controller
 {
 
-   
+
 
     public function login(Request $request)
     {
@@ -37,7 +37,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $request->session()->forget('LoginId');
-        //  $request->session()->flush() 
+        // $request->session()->flush();
         return response()->json(['message' => 'Logged out'], 200);
     }
 

@@ -36,26 +36,6 @@
                 </div>
             </div>
         </form>
-        <!-- <div class="user">
-            <p>Tên đăng nhập</p>
-            <input
-                type="text"
-                placeholder="Tên đăng nhập"
-                v-model="form.email"
-            />
-        </div>
-        <div class="password">
-            <p>Mật khẩu</p>
-            <input
-                type="password"
-                placeholder="Mật khẩu"
-                v-model="form.password"
-            />
-        </div>
-        <div class="button">
-            <button @click="login" type="submit">Login</button>
-            <router-link to="/Register">Register</router-link>
-        </div> -->
     </div>
 </template>
 
@@ -86,13 +66,6 @@ const handleLogin = async () => {
         } else {
             alert("Đăng nhập thất bại!");
         }
-
-        // {
-        //     headers: {
-        //         "X-CSRF-TOKEN": csrfToken,
-        //     },
-        // }
-
         console.log("Response: ", response.data);
     } catch (error) {
         console.error("Error:", error);

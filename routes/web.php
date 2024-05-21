@@ -33,7 +33,7 @@ Route::post('/api/login', [LoginController::class, 'login']);
 Route::get('/api/logout', [LoginController::class, 'logout']);
 Route::post('/api/register', [RegisterController::class, 'register']);
 
-Route::get('/api/posts', [PostIndexController::class, 'data']);
+Route::get('/api/users', [PostIndexController::class, 'data']);
 Route::get('/api/dashboard', [LoginController::class, 'dashboard']);
 // Route::post('api/deleteuserDashBoard',[DashBoardController::class,'deleteUser']);
 Route::get('api/data',[DashBoardController::class,'data']);

@@ -54,7 +54,6 @@
                                     <input
                                         type="datetime-local"
                                         v-model="createdate"
-                                        placeholder="Mobile No"
                                         class="nameinput input"
                                         required
                                     />

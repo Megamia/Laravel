@@ -11,6 +11,10 @@ class PostIndexController extends Controller
     public function data(Request $request)
     {
         $users = User::all();
-        return response()->json($users);
+        if (count($users) > 0) {
+            return response()->json(['dataUser' => $users]);
+        } else {
+            return response()->json(['message' => 'No users found.']);
+        }
     }
 }
