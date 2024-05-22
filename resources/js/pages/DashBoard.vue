@@ -163,7 +163,7 @@ const formatDate = (dateTime) => {
 
 const fetchData = async () => {
     try {
-        const response = await axios.get("http://127.0.0.1:8000/api/data");
+        const response = await axios.get(`${import.meta.env.VITE_APP_URL_API}/data`);
         data.value = response.data.data;
     } catch (error) {
         console.error("Error:", error);
@@ -190,7 +190,7 @@ const deleteuser = async (user) => {
     if (userConfirmed) {
         try {
             const response = await axios.post(
-                "http://127.0.0.1:8000/api/deluserDashBoard",
+                `${import.meta.env.VITE_APP_URL_API}/deluserDashBoard`,
                 {
                     userid: user.id,
                 }

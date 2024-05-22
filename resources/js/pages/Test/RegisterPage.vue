@@ -88,7 +88,7 @@ const handleRegister = async () => {
 
     try {
         const response = await axios.post(
-            "${APP_URL}api/register",
+            `${import.meta.env.VITE_APP_URL_API}/register`,
             {
                 name: dataUser.value.name,
                 email: dataUser.value.email,

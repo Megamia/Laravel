@@ -23,4 +23,5 @@ class DashBoard extends Model
         // 'permission',
         'createdate',
     ];
+    protected $hidden = [];
 }

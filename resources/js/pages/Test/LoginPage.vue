@@ -51,14 +51,13 @@ const dataUser = ref({
 });
 
 const handleLogin = async () => {
+    // console.log(`${process.env.APP_URL}`);
     // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     // console.log("csrfToken: " + csrfToken);
     // console.log("Email send: ", dataUser.value.email);
     // console.log("Password send: ", dataUser.value.password);
-   // http://127.0.0.1:8000/
-   // ${process.env.APP_URL}
     try {
-        const response = await axios.post(`http://127.0.0.1:8000/api/login`, {
+        const response = await axios.post(`${import.meta.env.VITE_APP_URL_API}/login`, {
             email: dataUser.value.email,
             password: dataUser.value.password,
         });

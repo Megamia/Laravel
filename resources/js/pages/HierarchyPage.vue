@@ -53,8 +53,8 @@ const dataAccount = ref([]);
 const dataUserDashBoard = ref([]);
 const fetchData = async () => {
     try {
-        const response1 = await axios.get("http://127.0.0.1:8000/api/users");
-        const response2 = await axios.get("http://127.0.0.1:8000/api/data");
+        const response1 = await axios.get(`${import.meta.env.VITE_APP_URL_API}/users`);
+        const response2 = await axios.get(`${import.meta.env.VITE_APP_URL_API}/data`);
         dataAccount.value = response1.data.dataUser;
         dataUserDashBoard.value = response2.data.data;
         // console.log(dataAccount.value);
