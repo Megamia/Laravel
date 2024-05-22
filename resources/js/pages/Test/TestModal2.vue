@@ -17,6 +17,7 @@
                             <div class="userid">
                                 <input
                                     type="text"
+                                    disabled
                                     placeholder="User ID *"
                                     class="useridinput input"
                                 />
@@ -63,10 +64,10 @@
                                         <option disabled value="">
                                             Please select one
                                         </option>
-                                        <option value="SPAdmin">
+                                        <option value="Super Admin">
                                             Super Admin
                                         </option>
-                                        <option value="HRAdmin">
+                                        <option value="HR Admin">
                                             HR Admin
                                         </option>
                                         <option value="Admin">Admin</option>
@@ -78,16 +79,19 @@
                                 <div class="detaildown">
                                     <input
                                         type="text"
+                                        disabled
                                         placeholder="Username *"
                                         class="nameinput input"
                                     />
                                     <input
                                         type="text"
+                                        disabled
                                         placeholder="Password*"
                                         class="nameinput input"
                                     />
                                     <input
                                         type="text"
+                                        disabled
                                         placeholder="Confirm Password*"
                                         class="nameinput input"
                                     />
@@ -236,6 +240,7 @@ const addUser = async () => {
     if (response.status === 200) {
         fullname.value = response.data.data.name;
         alert("Thêm " + fullname.value + " thành công");
+        added.value = true;
         // console.log(added.value);
     } else {
         alert("Có lỗi khi thêm người dùng");
