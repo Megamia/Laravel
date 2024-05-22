@@ -5,7 +5,7 @@
                 <div class="main">
                     <div class="about">
                         <div class="title">
-                            <span>Add User</span>
+                            <span @click="show">Add User</span>
                             <button
                                 class="modal-default-button"
                                 @click="$emit('close-modal'), (isOpen = false)"
@@ -19,7 +19,6 @@
                                     type="text"
                                     placeholder="User ID *"
                                     class="useridinput input"
-                                    required
                                 />
                             </div>
                             <div class="name">
@@ -57,13 +56,23 @@
                                         class="nameinput input"
                                         required
                                     />
-                                    <select class="nameinput input">
+                                    <select
+                                        class="nameinput input"
+                                        v-model="selectedOption"
+                                    >
                                         <option disabled value="">
                                             Please select one
                                         </option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
+                                        <option value="SPAdmin">
+                                            Super Admin
+                                        </option>
+                                        <option value="HRAdmin">
+                                            HR Admin
+                                        </option>
+                                        <option value="Admin">Admin</option>
+                                        <option value="Employee">
+                                            Employee
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="detaildown">
@@ -130,9 +139,9 @@
                             <div class="bothbutton">
                                 <button
                                     @click="
-                                        addUser(),
-                                            $emit('fetchData'),
-                                            $emit('close-modal')
+                                        addUser();
+                                        $emit('fetchData');
+                                        added && $emit('close-modal');
                                     "
                                     class="buttonadd"
                                 >
@@ -149,7 +158,6 @@
                                 >
                                     Cancel
                                 </button>
-                                <p>{{ userWithEmail }}</p>
                             </div>
                         </div>
                     </div>
@@ -165,6 +173,14 @@ const isOpen = ref(true);
 import { useStore } from "vuex";
 import axios from "axios";
 
+const fullname = ref("");
+const firstname = ref("");
+const lastname = ref("");
+const permission = ref("");
+const email = ref("");
+const createdate = ref("");
+const selectedOption = ref("");
+const added = ref(true);
 const store = useStore();
 // const users = ref(store.state.DataDashBoard.users);
 const options = [
@@ -175,9 +191,15 @@ const options = [
 ];
 const data = ref([]);
 
+const show = () => {
+    console.log(selectedOption.value);
+};
+
 const fetchData = async () => {
     try {
-        const response = await axios.get(`${import.meta.env.VITE_APP_URL_API}/data`);
+        const response = await axios.get(
+            `${import.meta.env.VITE_APP_URL_API}/data`
+        );
         data.value = response.data.data;
     } catch (error) {
         console.error("Error:", error);
@@ -191,14 +213,15 @@ onMounted(fetchData);
 // };
 
 const addUser = async () => {
-    isOpen.value = true;
     if (
         !firstname.value ||
         !lastname.value ||
         !email.value ||
-        !createdate.value
+        !createdate.value ||
+        !selectedOption.value
     ) {
         alert("Vui lòng điền đầy đủ thông tin");
+        added.value = false;
         return;
     }
     const response = await axios.post(
@@ -207,33 +230,18 @@ const addUser = async () => {
             name: firstname.value + " " + lastname.value,
             email: email.value,
             createdate: createdate.value,
+            permission: selectedOption.value,
         }
     );
     if (response.status === 200) {
         fullname.value = response.data.data.name;
         alert("Thêm " + fullname.value + " thành công");
-        return isOpen;
+        // console.log(added.value);
     } else {
         alert("Có lỗi khi thêm người dùng");
-        isOpen.value = true;
+        added.value = false;
     }
 };
-const fullname = ref("");
-const firstname = ref("");
-const lastname = ref("");
-const permission = ref("");
-const email = ref("");
-const createdate = ref("");
-// const newemail = ref("");
-const userWithEmail = ref("");
-
-// const cancel = () => {
-//   if (userWithEmail.value.length > 1) {
-//     console.log("Data Lấy được: " + userWithEmail.value);
-//   } else {
-//     console.log("Không lấy được userwithemail");
-//   }
-// };
 </script>
 <style scoped>
 .modal {

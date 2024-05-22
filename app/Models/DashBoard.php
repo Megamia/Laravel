@@ -20,7 +20,7 @@ class DashBoard extends Model
     protected $fillable = [
         'name',
         'email',
-        // 'permission',
+        'permission',
         'createdate',
     ];
     protected $hidden = [];

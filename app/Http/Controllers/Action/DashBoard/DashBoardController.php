@@ -11,7 +11,7 @@ class DashBoardController extends Controller
 
     public function addUser(Request $request)
     {
-        $data = $request->only(['name', 'email', 'createdate']);
+        $data = $request->only(['name', 'email', 'createdate', 'permission']);
 
         $existingUser = DashBoard::where('email', $data['email'])->first();
         if ($existingUser) {
@@ -22,6 +22,7 @@ class DashBoardController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'createdate' => $data['createdate'],
+            'permission' => $data['permission']
         ]);
 
         return response()->json([
@@ -30,18 +31,18 @@ class DashBoardController extends Controller
     }
 
     public function deleteUser(Request $request)
-{
-    $data = $request->only('userid');
-    $userid = $data['userid'];
-  
-    $user = DashBoard::where('id', $userid)->delete();
-    
-    if ($user) {
-        return response()->json(['message' => 'Người dùng đã được xóa thành công'], 200);
-    } else {
-        return response()->json(['message' => 'Không thể xóa người dùng'], 201);
+    {
+        $data = $request->only('userid');
+        $userid = $data['userid'];
+
+        $user = DashBoard::where('id', $userid)->delete();
+
+        if ($user) {
+            return response()->json(['message' => 'Người dùng đã được xóa thành công'], 200);
+        } else {
+            return response()->json(['message' => 'Không thể xóa người dùng'], 201);
+        }
     }
-}
     public function data(Request $request)
     {
         $users = DashBoard::all();
