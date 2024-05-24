@@ -17,4 +17,7 @@ class PostIndexController extends Controller
             return response()->json(['message' => 'No users found.']);
         }
     }
+    function showData($id){
+        return User::find($id);
+    }
 }

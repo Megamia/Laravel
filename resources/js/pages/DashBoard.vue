@@ -16,10 +16,11 @@
                     <button class="buttonadduser" @click="isOpen = true">
                         <span>Add user +</span>
                         <TestModal2
-                            @close-modal="isOpen = false"
-                            @fetch-data="fetchData"
+                            @close-modal="(isOpen = false), (propsData = {})"
                             v-if="isModalOpen"
+                            :propsData="propsData"
                         />
+                        <!-- @fetch-data="fetchData" -->
                     </button>
                     <div class="sort">
                         <span>
@@ -153,6 +154,7 @@ const search = ref("");
 const isModalOpen = computed(() => isOpen.value);
 const data = ref([]);
 const datauser = ref([]);
+const propsData = ref([]);
 
 const formatDate = (dateTime) => {
     const date = new Date(dateTime);
@@ -189,8 +191,8 @@ const filteredUsers = computed(() => {
 });
 
 const edituser = async (user) => {
-    datauser.value = user;
-    console.log(datauser.value);
+    propsData.value = user;
+    // console.log("propsData: " + propsData.value);
     // try {
     //     const response = await axios.get(
     //         `${import.meta.env.VITE_APP_URL_API}/data/${user}`

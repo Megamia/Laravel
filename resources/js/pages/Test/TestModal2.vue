@@ -5,7 +5,18 @@
                 <div class="main">
                     <div class="about">
                         <div class="title">
-                            <span @click="show">Add User</span>
+                            <span
+                                @click="show"
+                                v-if="
+                                    !propsData ||
+                                    Object.keys(propsData).length === 0
+                                "
+                            >
+                                Add User
+                            </span>
+                            <span @click="show" v-else> Update User </span>
+                            <!-- <span @click="show">{{propsData}}</span> -->
+
                             <button
                                 class="modal-default-button"
                                 @click="$emit('close-modal'), (isOpen = false)"
@@ -194,19 +205,29 @@ const options = [
     { name: "Lorem Ipsum", permissions: ["read", "write", "delete"] },
 ];
 const data = ref([]);
+const props = defineProps({
+    propsData: {
+        type: [Array, Object],
+        required: true,
+    },
+});
+const { propsData } = props;
 
 const show = () => {
-    console.log(selectedOption.value);
+    // console.log(selectedOption.value);
+    console.log(propsData);
 };
 
-const fetchData = async () => {
-    try {
-        const response = await axios.get(
-            `${import.meta.env.VITE_APP_URL_API}/data`
-        );
-        data.value = response.data.data;
-    } catch (error) {
-        console.error("Error:", error);
+const fetchData = () => {
+    // console.log(propsData.id);
+    if (propsData) {
+        firstname.value = propsData.name.split(" ")[0];
+        lastname.value = propsData.name.split(" ")[1];
+        email.value = propsData.email;
+        createdate.value = propsData.createdate;
+        selectedOption.value = propsData.permission;
+    } else {
+        console.log("Không có data của user");
     }
 };
 
