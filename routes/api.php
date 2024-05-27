@@ -5,3 +5,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('adduserDashBoard',[DashBoardController::class,'addUser']);
 Route::post('deluserDashBoard',[DashBoardController::class,'deleteUser']);
+Route::post('updateuserDashBoard',[DashBoardController::class,'updateUser']);

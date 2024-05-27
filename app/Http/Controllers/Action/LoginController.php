@@ -24,7 +24,6 @@ class LoginController extends Controller
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $request->session()->put('LoginId', $user->id);
-                $request->session()->put('LoginExpires', now()->addMinutes(60));
                 return response()->json(['message' => 'Success', 'data' => $user], 200);
             } else {
                 return response()->json(['message' => 'Fail'], 201);
@@ -54,7 +53,7 @@ class LoginController extends Controller
                 return response()->json(['message' => 'Fail', 'dataUser' => 'Admin'], 201);
             }
         } else {
-            return response()->json(['message' => 'This user doesn\'t exist'], 201);
+            return response()->json(['message' => 'This user doesn\'t exist', 'dataUser' => 'Admin'], 201);
         }
     }
 }

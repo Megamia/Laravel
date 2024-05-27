@@ -19,7 +19,7 @@
 
                             <button
                                 class="modal-default-button"
-                                @click="$emit('close-modal'), (isOpen = false)"
+                                @click="$emit('close-modal')"
                             >
                                 X
                             </button>
@@ -158,17 +158,27 @@
                                         $emit('fetchData');
                                         added && $emit('close-modal');
                                     "
+                                    v-if="
+                                        !propsData ||
+                                        Object.keys(propsData).length === 0
+                                    "
                                     class="buttonadd"
                                 >
                                     Add User
                                 </button>
-
                                 <button
                                     @click="
-                                        $emit('close-modal'),
-                                            (isOpen = false),
-                                            cancel
+                                        updateUser();
+                                        $emit('fetchData');
+                                        added && $emit('close-modal');
                                     "
+                                    v-else
+                                    class="buttonadd"
+                                >
+                                    Update User
+                                </button>
+                                <button
+                                    @click="$emit('close-modal')"
                                     class="buttoncancel"
                                 >
                                     Cancel
@@ -267,6 +277,28 @@ const addUser = async () => {
         alert("Có lỗi khi thêm người dùng");
         added.value = false;
     }
+};
+
+const updateUser = async () => {
+    // console.log(propsData.id);
+    const response = await axios.post(
+        `${import.meta.env.VITE_APP_URL_API}/updateuserDashBoard`,
+        {
+            id: propsData.id,
+            name: firstname.value + " " + lastname.value,
+            email: email.value,
+            createdate: createdate.value,
+            permission: selectedOption.value,
+        }
+    );
+    if (response.status === 200) {
+        fullname.value = response.data.data.name;
+        alert("Sửa thông tin của " + fullname.value + " thành công");
+        // console.log(added.value);
+    } else {
+        alert("Có lỗi khi sửa thông tin người dùng");
+    }
+    fetchData();
 };
 </script>
 <style scoped>

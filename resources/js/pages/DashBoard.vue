@@ -19,8 +19,8 @@
                             @close-modal="(isOpen = false), (propsData = {})"
                             v-if="isModalOpen"
                             :propsData="propsData"
+                            @fetch-data="fetchData"
                         />
-                        <!-- @fetch-data="fetchData" -->
                     </button>
                     <div class="sort">
                         <span>

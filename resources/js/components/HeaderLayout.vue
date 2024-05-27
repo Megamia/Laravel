@@ -88,19 +88,32 @@ onUnmounted(() => {
 });
 
 const logout = async () => {
-    const response = await axios.get("http://127.0.0.1:8000/api/logout");
-    if (response.status === 200) {
-        alert("Đăng xuất thành công");
-        dataUser.value = "Admin";
+    if (dataUser.value == "Admin") {
+        alert("Đã đăng nhập đâu mà đăng xuất!");
+        return;
+    } else {
+        const response = await axios.get(
+            `${import.meta.env.VITE_APP_URL_API}/logout`
+        );
+        if (confirm("Bạn chắc chắn muốn đăng xuất?")) {
+            if (response.status === 200) {
+                alert("Đăng xuất thành công");
+                return;
+            }
+        } else {
+            alert("Không muốn đăng xuất thì bấm vào làm gì?");
+        }
     }
 };
 onMounted(async () => {
-    const response = await axios.get("http://127.0.0.1:8000/api/dashboard");
+    const response = await axios.get(
+        `${import.meta.env.VITE_APP_URL_API}/dashboard`
+    );
     if (response.status === 200) {
         dataUser.value = response.data.dataUser.name;
         // console.log(dataUser.value);
     } else if (response.status === 201) {
-        dataUser.value = "Admin";
+        dataUser.value = response.data.dataUser;
         // console.log(dataUser.value);
     }
     return dataUser.value;
@@ -160,7 +173,7 @@ onMounted(async () => {
         margin: 0;
         padding: 0;
         padding-block: 10px;
-        gap:5px;
+        gap: 5px;
     }
     ul li {
         padding-inline: 20px;

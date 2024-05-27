@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Action\DashBoard;
 use App\Http\Controllers\Controller;
 use App\Models\DashBoard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DashBoardController extends Controller
 {
@@ -29,6 +30,26 @@ class DashBoardController extends Controller
             'message' => 'User has been add to DashBoard', 'data' => $user
         ], 200);
     }
+
+
+    public function updateUser(Request $request)
+    {
+        $newData = $request->only(['name', 'email', 'createdate', 'permission']);
+
+        
+            $data = DashBoard::find($request->id);
+
+            $data->name = $newData['name'];
+            $data->email = $newData['email'];
+            $data->permission = $newData['permission'];
+            $data->createdate = $newData['createdate'];
+
+            $data->save();
+
+            return response()->json(['message' => 'User updated successfully.', 'data' => $data], 200);
+        
+    }
+
 
     public function deleteUser(Request $request)
     {
